@@ -1,7 +1,8 @@
-import { Check } from "@mui/icons-material";
+import { faCheck, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Container } from "react-smooth-dnd";
-import { Button } from "..";
+import { Button, Input } from "..";
 import "./style.scss";
 
 const List = ({
@@ -15,8 +16,13 @@ const List = ({
   const [adding, setAdding] = useState(false);
 
   const createCard = () => {
-    onCreateCard(text);
-    setText("");
+    if (text) {
+      onCreateCard(text);
+      setText("");
+      setAdding(false);
+    } else {
+      setAdding(false);
+    }
   };
 
   return (
@@ -35,14 +41,27 @@ const List = ({
       </div>
       <div className="tc-list-actions">
         {!adding ? (
-          <Button onClick={() => setAdding(true)} fullWidth>
+          <Button
+            onClick={() => setAdding(true)}
+            fullWidth
+            startIcon={<FontAwesomeIcon icon={faPlus} />}
+          >
             Add item
           </Button>
         ) : (
           <div className="tc-list-form">
-            <input value={text} onChange={(e) => setText(e.target.value)} />
-            <Button onClick={createCard}>
-              <Check />
+            <Input
+              className="tc-list-form-input"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter text here..."
+            />
+            <Button className="tc-list-form-button" onClick={createCard}>
+              {text ? (
+                <FontAwesomeIcon icon={faCheck} />
+              ) : (
+                <FontAwesomeIcon icon={faTimes} />
+              )}
             </Button>
           </div>
         )}

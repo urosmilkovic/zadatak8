@@ -26,6 +26,15 @@
     .tc-list-form {
       display: flex;
       justify-content: space-between;
+      .tc-list-form-input {
+        width: calc(100% - 50px);
+      }
+      .tc-list-form-button {
+        padding: 8px 15px;
+        svg {
+          margin-right: 0px;
+        }
+      }
     }
   }
 }

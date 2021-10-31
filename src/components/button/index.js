@@ -1,12 +1,15 @@
 import React from "react";
 import "./style.scss";
 
-const Button = ({ children, fullWidth, ...props }) => {
+const Button = ({ className, children, startIcon, fullWidth, ...props }) => {
   return (
     <button
-      className={`tc-button-main ${fullWidth ? "tc-button-full-width" : ""}`}
+      className={`tc-button-main ${
+        fullWidth ? "tc-button-full-width" : ""
+      } ${className}`}
       {...props}
     >
+      {startIcon}
       {children}
     </button>
   );
