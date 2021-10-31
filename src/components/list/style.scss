@@ -1,0 +1,27 @@
+@import "../../scss/colors";
+
+.tc-list-main {
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgba($black, 0.2);
+  padding: 10px;
+  .tc-list-title {
+    width: 100%;
+    padding: 10px 20px;
+    color: $white;
+    background-color: red;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .tc-list-content {
+    width: 100%;
+    padding: 10px 0px;
+    & > * > *:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+  .tc-list-actions {
+    width: 100%;
+  }
+}
