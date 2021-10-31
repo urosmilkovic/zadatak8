@@ -1,0 +1,12 @@
+@import "../../scss/colors";
+
+.tc-create-main {
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgba($black, 0.2);
+  padding: 10px;
+  .tc-create-input {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}

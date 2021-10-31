@@ -7,6 +7,9 @@
   outline: none;
   border: 2px solid rgba($black, 0.1);
   padding: 8px;
+  &.tc-input-full-width {
+    width: 100%;
+  }
   &:focus {
     border: 2px solid $primary;
   }

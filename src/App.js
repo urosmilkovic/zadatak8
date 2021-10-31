@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Board, Card, List } from "./components";
+import { Board, Card, List, Create } from "./components";
 import { v4 as uuidv4 } from "uuid";
 import Layout from "./layout";
 
@@ -91,6 +91,10 @@ const App = () => {
     );
   };
 
+  const onCreateList = (title) => {
+    setLists([...lists, { title, cards: [] }]);
+  };
+
   return (
     <Layout>
       <Board>
@@ -107,6 +111,7 @@ const App = () => {
             ))}
           </List>
         ))}
+        <Create onCreateList={onCreateList} />
       </Board>
     </Layout>
   );
