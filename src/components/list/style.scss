@@ -9,7 +9,7 @@
     width: 100%;
     padding: 10px 20px;
     color: $white;
-    background-color: red;
+    background: linear-gradient(25deg, $primary, $secondary);
     border-radius: 10px;
     text-align: center;
     font-weight: 500;
@@ -23,5 +23,9 @@
   }
   .tc-list-actions {
     width: 100%;
+    .tc-list-form {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
