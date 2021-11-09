@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Board, Card, List, Create } from "./components";
 import { v4 as uuidv4 } from "uuid";
 import Layout from "./layout";
+
+const tryParse = (x) => {
+  try {
+    return JSON.parse(x);
+  } catch {
+    return x;
+  }
+};
 
 const insertAt = (array, index, ...elements) => {
   const x = [...array];
@@ -10,33 +18,39 @@ const insertAt = (array, index, ...elements) => {
 };
 
 const App = () => {
-  const [lists, setLists] = useState([
-    {
-      title: "Backlog",
-      cards: [
-        { id: 1, text: "Release the course" },
-        { id: 2, text: "Sit back and relax" },
-      ],
-    },
-    {
-      title: "In Progress",
-      cards: [
-        { id: 3, text: "Work on projects" },
-        { id: 4, text: "Listen to music" },
-      ],
-    },
-    {
-      title: "Complete",
-      cards: [
-        { id: 5, text: "Being cool" },
-        { id: 6, text: "Getting stuff done" },
-      ],
-    },
-    {
-      title: "On hold",
-      cards: [{ id: 7, text: "Being uncool" }],
-    },
-  ]);
+  const [lists, setLists] = useState(
+    tryParse(localStorage.getItem("lists")) || [
+      {
+        title: "Backlog",
+        cards: [
+          { id: 1, text: "Release the course" },
+          { id: 2, text: "Sit back and relax" },
+        ],
+      },
+      {
+        title: "In Progress",
+        cards: [
+          { id: 3, text: "Work on projects" },
+          { id: 4, text: "Listen to music" },
+        ],
+      },
+      {
+        title: "Complete",
+        cards: [
+          { id: 5, text: "Being cool" },
+          { id: 6, text: "Getting stuff done" },
+        ],
+      },
+      {
+        title: "On hold",
+        cards: [{ id: 7, text: "Being uncool" }],
+      },
+    ]
+  );
+
+  useEffect(() => {
+    localStorage.setItem("lists", JSON.stringify(lists));
+  }, [lists]);
 
   const onDrop = (index, { removedIndex, addedIndex, payload }) => {
     if (removedIndex !== null && addedIndex !== null) {
