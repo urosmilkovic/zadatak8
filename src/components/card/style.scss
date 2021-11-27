@@ -1,0 +1,22 @@
+@import "../../scss/colors";
+
+.tc-card-main {
+  border-radius: 10px;
+  background-color: rgba($black, 0.6);
+  padding: 8px 10px;
+  color: $white;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.tc-card-drag {
+  transition: 300ms transform ease;
+  background-color: rgba($primary, 0.6);
+  transform: rotate(5deg);
+}
+
+.tc-card-drop {
+  transition: 300ms transform ease-in-out;
+  background-color: rgba($primary, 0.6);
+  transform: rotate(0deg);
+}
